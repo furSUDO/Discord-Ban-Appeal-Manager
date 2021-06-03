@@ -1,4 +1,4 @@
-![DBAM](https://github.com/furSUDO/Discord-Ban-Appeal-Manager/blob/master/github/Rules-Embed.gif?raw=true) 
+![DBAM](https://github.com/furSUDO/Discord-Ban-Appeal-Manager/blob/main/github/Rules-Embed.gif?raw=true) 
 ---
 [![Language](https://img.shields.io/badge/JavaScript-purple.svg?style=plastic&colorB=ff4e4e)]()
 
