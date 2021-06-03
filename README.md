@@ -37,7 +37,7 @@ Here is a list of active commands
 
 
 
-## SUDOku is open source... kinda?
+## DBAM is open source... kinda?
 
 While the main code is fully downloadable and editable, things like the updates we are working on stay a secret!
 
