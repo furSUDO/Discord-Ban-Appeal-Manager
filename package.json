@@ -1,0 +1,19 @@
+{
+  "name": "bas",
+  "version": "0.1.0",
+  "description": "Dicord ban appeal system",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node bot.js"
+  },
+  "keywords": [
+    "discord",
+    "ban",
+    "appeals"
+  ],
+  "author": "furSUDO",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^12.5.3"
+  }
+}
