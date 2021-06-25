@@ -1,0 +1,7 @@
+{
+	"prefix": "!",
+	"token": "Bot Token",
+	"sqlHost":"localhost",
+	"sqlUser":"root",
+	"sqlPassword":"password"
+}
