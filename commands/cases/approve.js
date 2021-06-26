@@ -14,7 +14,7 @@ module.exports = {
 		con.query(sql,function (err, result) {
 			if(result.length!==0){
 				//Selects row from DB where link exists
-				let sql = `SELECT * FROM dbam.linkedservers WHERE parentServer = '${serverID}' OR appealServer = '${serverID}'`;
+				let sql = `SELECT * FROM linkedservers WHERE parentServer = '${serverID}' OR appealServer = '${serverID}'`;
 				con.query(sql,async function (err, result){
 					if (err){
                         console.log(err);
