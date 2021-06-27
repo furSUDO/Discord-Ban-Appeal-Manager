@@ -1,5 +1,3 @@
-const { description } = require("../death/test");
-
 //FINISHED
 module.exports = {
 	name: 'link',
