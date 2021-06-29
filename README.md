@@ -60,6 +60,51 @@ Setup is very easy, clone the repo, install dependencies by running ``npm i``, a
 	"sqlPassword":"password"
 }
 ```
+
+## Setting up some SQL
+to create the servers table:
+```sql
+CREATE TABLE `servers` (
+  `serverID` varchar(24) NOT NULL,
+  `whitelist` varchar(8000) DEFAULT '[]',
+  PRIMARY KEY (`serverID`)
+)
+```
+
+to create the linked servers table:
+```sql
+CREATE TABLE `linkedservers` (
+  `parentServer` varchar(24) NOT NULL,
+  `appealServer` varchar(24) NOT NULL,
+  PRIMARY KEY (`parentServer`,`appealServer`),
+  UNIQUE KEY `parentServer` (`parentServer`),
+  UNIQUE KEY `appealServer` (`appealServer`),
+  CONSTRAINT `CHK_Crosslink` CHECK (`parentServer` <> `appealServer` or `parentServer` is null or `appealServer` is null)
+)
+```
+you also need to create a trigger to preent servers from being crosslinked. 
+Runnung this sql command provided me with a lot of hassle during development, so you can forcerun it with `!dropandbuild` if this doesn't work;
+```sql
+CREATE TRIGGER before_linkedservers_insert BEFORE INSERT 
+    ON linkedservers
+    FOR EACH ROW BEGIN  IF EXISTS(
+        SELECT 1   
+            FROM
+                linkedservers   
+            WHERE
+                (
+                    appealServer = NEW.parentServer             
+                    OR parentServer = NEW.appealServer
+                )  
+            )THEN            SIGNAL SQLSTATE '45000'             
+        SET
+            MESSAGE_TEXT = 'DUPLICATED SERVER'; 
+    END IF; 
+    END;
+```
+
+
+
 and that should be about it that is needed to be done :P
 
 Enjoy!
