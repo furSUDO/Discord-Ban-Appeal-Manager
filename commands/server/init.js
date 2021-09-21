@@ -16,13 +16,13 @@ module.exports = {
                 con.query(sql2,async function (err, result){
                     if(result.length!==0){
                         if (result[0].appealServer === message.guild.id) {
-                            if (!(message.guild.me.permissions.has(['MANAGE_CHANNELS','MANAGE_ROLES','MANAGE_GUILD','BAN_MEMBERS','MANAGE_MESSAGES']))) {
+                            if (!(message.guild.me.permissions.has(['MANAGE_CHANNELS','MANAGE_ROLES','MANAGE_GUILD','BAN_MEMBERS','KICK_MEMBERS','MANAGE_MESSAGES']))) {
                                 message.reply({
                                     embeds: [{
                                         color: 15088700,
                                         title:`<:warning:847479424583729213> WARNING <:warning:847479424583729213>`,
                                         description:`Please make sure I have all of the following permissions enabled:`,
-                                        image:{url:`https://cdn.discordapp.com/attachments/756644176795533334/858360385022197780/DBAM_REQUIRED_PERMISSION_SCOPE.png`}
+                                        image:{url:`https://cdn.discordapp.com/attachments/756644176795533334/866994443529224192/DBAM_REQUIRED_PERMISSION_SCOPE.png`}
                                     }]
                                 })
                                 return;
