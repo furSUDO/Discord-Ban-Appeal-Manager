@@ -43,7 +43,7 @@ module.exports = {
                                     parentGuild.fetchInvites().then(async invites => {
                                         guildMember.send(`Your ban appeal on ${parentGuild.name} has been denied!\nAs a result, you have also been banned from the Appeal server!`).then(guildMember.ban())
                                         .catch(error => {
-                                            message.channel.send(`failded to DM <@&${userID}>, Their DMs may be closed!`)
+                                            message.channel.send(`Failed to DM <@&${userID}>, Their DMs may be closed!`)
                                         })
                                     })
                                     message.channel.messages.fetch({ limit: 100 })
