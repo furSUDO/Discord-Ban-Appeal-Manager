@@ -1,5 +1,5 @@
 <h1 align="center"> 🔨 DBAM </h1>
-<h3 align="center">DBAM is an on platform solution for managing ban appeals on your discord server.</h3> 
+<h3 align="center">DBAM is an on-platform solution for managing ban appeals on your discord server.</h3> 
 
 ## 📩 Invite
 #### [Click to invite DBAM to your servers](https://discord.com/api/oauth2/authorize?client_id=849755454208606228&permissions=268443700&scope=applications.commands%20bot)
@@ -83,7 +83,7 @@ CREATE TABLE `linkedservers` (
 )
 ```
 you also need to create a trigger to preent servers from being crosslinked. 
-Runnung this sql command provided me with a lot of hassle during development, so you can forcerun it with `!dropandbuild` if this doesn't work;
+Running this sql command provided me with a lot of hassle during development, so you can forcerun it with `!dropandbuild` if this doesn't work;
 ```sql
 CREATE TRIGGER before_linkedservers_insert BEFORE INSERT 
     ON linkedservers
@@ -105,6 +105,6 @@ CREATE TRIGGER before_linkedservers_insert BEFORE INSERT
 
 
 
-and that should be about it that is needed to be done :P
+And that should be everything! :P
 
 Enjoy!
