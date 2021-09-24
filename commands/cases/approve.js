@@ -4,7 +4,7 @@ const { v4: uuidv4 } = require('uuid');
 const wait = require('util').promisify(setTimeout);
 module.exports = {
 	name: 'approve',
-	description: 'approve the ban appeal',
+	description: 'Approve the ban appeal.',
 	cooldown: 5,
 	permissions: 'KICK_MEMBERS',
 	async execute(client, message, args, con) {
@@ -32,7 +32,7 @@ module.exports = {
                                             embeds: [{
                                                 color: 15088700,
                                                 title:`<:warning:847479424583729213> WARNING <:warning:847479424583729213>`,
-                                                description:`Please make sure I have all of the following permissions enabled in both ${parentServer.name}, and here.`,
+                                                description:`Please make sure I have been given all of the following permissions in both ${parentServer.name}, and in here.`,
                                                 image:{url:`https://cdn.discordapp.com/attachments/756644176795533334/866994443529224192/DBAM_REQUIRED_PERMISSION_SCOPE.png`}
                                             }]
                                         })
@@ -40,7 +40,7 @@ module.exports = {
                                     }
                                     
                                     const parentGuild = client.guilds.cache.find(guilds => guilds.id === parentServer.id);
-                                    parentGuild.members.unban(userID,`Ban Appeal approved by ${message.author.username}`).catch(e=>{
+                                    parentGuild.members.unban(userID,`Ban appeal approved by ${message.author.username}`).catch(e=>{
                                         console.log(e);
                                         message.reply(`Failed to unban this user from ${parentGuild.name}\nHave they already been unbanned?`);
                                     })
@@ -63,13 +63,13 @@ module.exports = {
                                         await fsPromises.mkdir(`./api/archives/${parentServer.id}/${guildMember.user.id}/`,{ recursive: true })
                                         const writeStream = fs.createWriteStream(`./api/archives/${parentServer.id}/${guildMember.user.id}/${uuidv4()}.txt`);
                                         const pathName = writeStream.path;
-                                        writeStream.write(`Ban Appeal Log for ${guildMember.user.username} (${guildMember.user.id}) - ${message.channel.createdAt}\n\n`)
+                                        writeStream.write(`Ban appeal log for ${guildMember.user.username} (${guildMember.user.id}) - ${message.channel.createdAt}\n\n`)
                                         messages = messages.sort()
                                         messages.forEach(message => {
                                             writeStream.write(`[${message.channel.name}] [${message.author.id}] ${message.author.username}#${message.author.discriminator}: ${message.content}\n`)
                                         });
                                         writeStream.on('error', (err) => {
-                                            console.error(`There is an error writing the file ${pathName} => ${err}`)
+                                            console.error(`There is an error writing the file ${pathName} => ${err}.`)
                                         });
                                         writeStream.end();
                                         //Logging
@@ -85,12 +85,12 @@ module.exports = {
                                             logChannel.send({
                                                 embeds: [{
                                                     color: 4437377,
-                                                    title:`<:verified:847476592837263361> ${guildMember.user.username} (${guildMember.user.id}) has been unbanned from ${parentGuild.name}`,
+                                                    title:`<:verified:847476592837263361> ${guildMember.user.username} (${guildMember.user.id}) has been unbanned from ${parentGuild.name}.`,
                                                     fields:[{
-                                                        name:`Responsible Moderator`,
+                                                        name:`Responsible moderator`,
                                                         value:`${message.author.username}`
                                                     },{
-                                                        name:`Conversation Archive`,
+                                                        name:`Conversation archive`,
                                                         value:`https://api.dbam.dev/${pathName.substring(6)}`
                                                     }]
                                                 }]
@@ -101,7 +101,7 @@ module.exports = {
                                         }
                                     }).catch(e=>console.log(e));
                                 }).catch(e=>{
-                                    message.reply(`This member has left the Appeal server, attempting to proceed with action.`)
+                                    message.reply(`This member has left the appeal server, attempting to proceed with action.`)
                                     let appealServer = client.guilds.cache.get(result[0].appealServer);
                                     let parentServer = client.guilds.cache.get(result[0].parentServer);
                                     if (!(appealServer.me.permissions.has(['MANAGE_CHANNELS','MANAGE_ROLES','MANAGE_GUILD','BAN_MEMBERS','KICK_MEMBERS','MANAGE_MESSAGES']) || parentServer.me.permissions.has(['MANAGE_CHANNELS','MANAGE_ROLES','MANAGE_GUILD','BAN_MEMBERS','MANAGE_MESSAGES']))) {
@@ -109,16 +109,16 @@ module.exports = {
                                             embeds: [{
                                                 color: 15088700,
                                                 title:`<:warning:847479424583729213> WARNING <:warning:847479424583729213>`,
-                                                description:`Please make sure I have all of the following permissions enabled in both ${parentServer.name}, and here.`,
+                                                description:`Please make sure I have been given all of the following permissions in both ${parentServer.name}, and in here.`,
                                                 image:{url:`https://cdn.discordapp.com/attachments/756644176795533334/866994443529224192/DBAM_REQUIRED_PERMISSION_SCOPE.png`}
                                             }]
                                         })
                                         return;
                                     }
                                     const parentGuild = client.guilds.cache.find(guilds => guilds.id === parentServer.id);
-                                    parentGuild.members.unban(userID,`Ban Appeal approved by ${message.author.username}`).catch(e=>{
+                                    parentGuild.members.unban(userID,`Ban appeal approved by ${message.author.username}`).catch(e=>{
                                         console.log(e);
-                                        message.reply(`Failed to unban this user from ${parentGuild.name}\nHave they already been unbanned?`);
+                                        message.reply(`Failed to unban this user from ${parentGuild.name}.\nHave they already been unbanned?`);
                                     })
                                     message.channel.messages.fetch({ limit: 100 })
                                     .then(async messages =>{
@@ -126,13 +126,13 @@ module.exports = {
                                         await fsPromises.mkdir(`./api/archives/${parentServer.id}/${guildMember.id}/`,{ recursive: true })
                                         const writeStream = fs.createWriteStream(`./api/archives/${parentServer.id}/${guildMember.id}/${uuidv4()}.txt`);
                                         const pathName = writeStream.path;
-                                        writeStream.write(`Ban Appeal Log for ${guildMember.username} (${guildMember.id}) - ${message.channel.createdAt}\n\n`)
+                                        writeStream.write(`Ban appeal log for ${guildMember.username} (${guildMember.id}) - ${message.channel.createdAt}\n\n`)
                                         messages = messages.sort()
                                         messages.forEach(message => {
                                             writeStream.write(`[${message.channel.name}] [${message.author.id}] ${message.author.username}#${message.author.discriminator}: ${message.content}\n`)
                                         });
                                         writeStream.on('error', (err) => {
-                                            console.error(`There is an error writing the file ${pathName} => ${err}`)
+                                            console.error(`There is an error writing the file ${pathName} => ${err}.`)
                                         });
                                         writeStream.end();
                                         //Logging
@@ -140,7 +140,7 @@ module.exports = {
                                         if ((typeof logChannel === 'undefined')) {
                                             setTimeout(() => {
                                             message.reply({embeds: [{color: 15088700,title:`<:warning:847479424583729213> Failed to log event`,description:`Please create a channel with the name \`logs\` or run \`!init\` to format the server properly.\n\nThis channel will not delete automatically.`,fields:[{
-                                                name:`Conversation Archive`,
+                                                name:`Conversation archive`,
                                                 value:`https://api.dbam.dev/${pathName.substring(6)}`
                                             }]}],}).catch(e=>console.log(e))
                                             }, 10000);
@@ -148,12 +148,12 @@ module.exports = {
                                             logChannel.send({
                                                 embeds: [{
                                                     color: 4437377,
-                                                    title:`<:verified:847476592837263361> ${guildMember.username} (${guildMember.id}) has been unbanned from ${parentGuild.name}`,
+                                                    title:`<:verified:847476592837263361> ${guildMember.username} (${guildMember.id}) has been unbanned from ${parentGuild.name}.`,
                                                     fields:[{
-                                                        name:`Responsible Moderator`,
+                                                        name:`Responsible moderator`,
                                                         value:`${message.author.username}`
                                                     },{
-                                                        name:`Conversation Archive`,
+                                                        name:`Conversation archive`,
                                                         value:`https://api.dbam.dev/${pathName.substring(6)}`
                                                     }]
                                                 }]
