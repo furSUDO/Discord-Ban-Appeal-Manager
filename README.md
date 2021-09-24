@@ -30,7 +30,7 @@ From here all you need to do is attach the invite link that DBAM made for you in
 
 | command | usage | description |
 |---------|-------|-------------|
-| approve  | ``!approve`` | DMs and unbans the user, as well as archives the channel. |
+| approve  | ``!approve`` | DMs and unbans the user, and archives the channel. |
 | softdeny  | ``!softdeny`` | Kicks the user and archives the case channel. |
 | deny  | ``!deny`` | Bans the user and archives the case channel. |
 
