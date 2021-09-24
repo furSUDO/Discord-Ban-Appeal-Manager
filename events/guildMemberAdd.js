@@ -10,7 +10,7 @@ module.exports = {
 				let sql = `SELECT * FROM linkedservers WHERE parentServer = '${serverID}' OR appealServer = '${serverID}'`;
 				con.query(sql,function (err, result1){
 					if (err){
-						console.log(`member joined an unlinked server!`);
+						console.log(`Member joined an unlinked server!`);
 					}else{
 						if(result1.length!==0){
 							let appealServer = client.guilds.cache.get(result1[0].appealServer);
@@ -53,7 +53,7 @@ module.exports = {
 													value: `${memberState.reason}`
 												},{
 													name:`Privacy Settings`,
-													value:`In the meantime please make sure your DMs are open so that you can recieve the verdict of your appeal.`
+													value:`In the meantime, please make sure your DMs are open so that you can recieve the verdict of your appeal.`
 												}],
 												image: {
 													url:`https://cdn.discordapp.com/attachments/756644176795533334/857322582780018758/privacy.png`
@@ -72,15 +72,15 @@ module.exports = {
 					
 				});
 			}else{
-				console.log(`user joined in a server not in the database`);
+				console.log(`User joined a server not in the database`);
 				var sql = `INSERT INTO servers (serverID) VALUES ('${serverID}')`;
 				con.query(sql, function (err) {
 					if (err){
 						if (err.code === 'ER_DUP_ENTRY'){
-							console.log("Bot joined a preexisiting server");
+							console.log("Bot joined a pre-existing server.");
 						}
 					}else{
-						console.log("server added to database");
+						console.log("Server added to database.");
 					}
 				});
 			}
