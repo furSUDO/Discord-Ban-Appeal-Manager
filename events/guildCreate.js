@@ -5,10 +5,10 @@ module.exports = {
 		con.query(sql, function (err) {
 			if (err){
 				if (err.code === 'ER_DUP_ENTRY'){
-					console.log("Bot joined a preexisiting server");
+					console.log("Bot joined a pre-existing server.");
 				}
 			}else{
-				console.log("bot joined a new server");
+				console.log("Bot joined a new server.");
 			}
 		});
     },
