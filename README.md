@@ -82,25 +82,25 @@ CREATE TABLE `linkedservers` (
   CONSTRAINT `CHK_Crosslink` CHECK (`parentServer` <> `appealServer` or `parentServer` is null or `appealServer` is null)
 )
 ```
-you also need to create a trigger to preent servers from being crosslinked. 
-Running this sql command provided me with a lot of hassle during development, so you can forcerun it with `!dropandbuild` if this doesn't work;
+you also need to create a trigger to prevent servers from being crosslinked. 
+
 ```sql
+delimiter //
 CREATE TRIGGER before_linkedservers_insert BEFORE INSERT 
-    ON linkedservers
-    FOR EACH ROW BEGIN  IF EXISTS(
+    ON linkedservers FOR EACH ROW
+    BEGIN 
+      IF EXISTS(
         SELECT 1   
-            FROM
-                linkedservers   
-            WHERE
-                (
-                    appealServer = NEW.parentServer             
-                    OR parentServer = NEW.appealServer
-                )  
-            )THEN            SIGNAL SQLSTATE '45000'             
-        SET
-            MESSAGE_TEXT = 'DUPLICATED SERVER'; 
-    END IF; 
-    END;
+        FROM linkedservers   
+        WHERE (
+          appealServer = NEW.parentServer             
+          OR parentServer = NEW.appealServer
+        )  
+      ) THEN SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'DUPLICATED SERVER'; 
+      END IF; 
+    END//
+
+delimiter ;
 ```
 
 
