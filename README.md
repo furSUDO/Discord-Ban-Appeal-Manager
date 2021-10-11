@@ -1,5 +1,5 @@
 <h1 align="center"> 🔨 DBAM </h1>
-<h3 align="center">DBAM is an on platform solution for managing ban appeals on your discord server.</h3> 
+<h3 align="center">DBAM is an on-platform solution for managing ban appeals on your discord server.</h3> 
 
 ## 📩 Invite
 #### [Click to invite DBAM to your servers](https://discord.com/api/oauth2/authorize?client_id=849755454208606228&permissions=268443700&scope=applications.commands%20bot)
@@ -30,7 +30,7 @@ From here all you need to do is attach the invite link that DBAM made for you in
 
 | command | usage | description |
 |---------|-------|-------------|
-| approve  | ``!approve`` | DMs and unbans the user, as well as archives the channel. |
+| approve  | ``!approve`` | DMs and unbans the user, and archives the channel. |
 | softdeny  | ``!softdeny`` | Kicks the user and archives the case channel. |
 | deny  | ``!deny`` | Bans the user and archives the case channel. |
 
@@ -83,6 +83,7 @@ CREATE TABLE `linkedservers` (
 )
 ```
 you also need to create a trigger to prevent servers from being crosslinked. 
+
 ```sql
 delimiter //
 CREATE TRIGGER before_linkedservers_insert BEFORE INSERT 
@@ -104,6 +105,6 @@ delimiter ;
 
 
 
-and that should be about it that is needed to be done :P
+And that should be everything! :P
 
 Enjoy!

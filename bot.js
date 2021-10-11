@@ -64,7 +64,7 @@ con.connect(function(err) {
 		if (command.permissions) {
 			const authorPerms = message.channel.permissionsFor(message.author);
 			if (!authorPerms || !authorPerms.has(command.permissions)) {
-				return message.reply('You can not do this!');
+				return message.reply('You cannot use that!');
 			}
 		}
 
@@ -104,7 +104,7 @@ con.connect(function(err) {
 			command.execute(client, message, args, con);
 		} catch (error) {
 			console.error(error);
-			message.reply('there was an error trying to execute that command!');
+			message.reply('There was an error trying to execute that command!');
 		}
 	});
 
