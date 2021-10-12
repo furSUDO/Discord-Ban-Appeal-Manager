@@ -1,7 +1,9 @@
 {
 	"prefix": "!",
-	"token": "Bot Token",
+	"token": "token",
 	"sqlHost":"localhost",
 	"sqlUser":"root",
-	"sqlPassword":"password"
+	"sqlPassword":"password",
+	"backupServer":"backup server ID",
+	"backupChannel":"backup channel ID"
 }
