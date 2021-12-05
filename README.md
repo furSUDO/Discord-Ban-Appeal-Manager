@@ -9,16 +9,16 @@
 #### 1 - Linking
 Once DBAM has been added to **both** your main server and your appeal server run this command to link the two;
 ```
-!link <parentServerID> <appealServerID>
+/link <parentServerID> <appealServerID>
 ``` 
 #### 2 - Formatting
-From there you will be prompted to run `!init` in the appeal server, this is so that the bot can set up everything with the right structure and permissions it needs. Due to this command's destructive nature, it can ONLY be run in the appeal server.
+From there you will be prompted to run `/init` in the appeal server, this is so that the bot can set up everything with the right structure and permissions it needs. Due to this command's destructive nature, it can ONLY be run in the appeal server.
 
 This can also be run at any time to fix any issues you may be experiencing.
 #### 3 - Whitelisting
-Since DBAM automatically kicks those who are not banned, you may want to whitelist your staff so that they can get in. Here is the command to add members to the whitelist;
+Since DBAM automatically kicks those who are not banned, you may want to whitelist your staff so that they can get in. Here is the command to add members to the whitelist; (note that whitelisted members are required to be on the main server)
 ```
-!whitelist add <userID>
+/whitelist add/remove <userID>
 ```
 #### 4 - That's it
 ##### No... seriously, that's it.
@@ -30,18 +30,18 @@ From here all you need to do is attach the invite link that DBAM made for you in
 
 | command | usage | description |
 |---------|-------|-------------|
-| approve  | ``!approve`` | DMs and unbans the user, and archives the channel. |
-| softdeny  | ``!softdeny`` | Kicks the user and archives the case channel. |
-| deny  | ``!deny`` | Bans the user and archives the case channel. |
+| approve  | ``/case approve [reason]`` | DMs and unbans the user, and archives the channel. |
+| softdeny  | ``/case softdeny [reason]`` | Kicks the user and archives the case channel. |
+| deny  | ``/case deny [reason]`` | Bans the user and archives the case channel. |
 
 ### Management commands
 
 | command | usage | description |
 |---------|-------|-------------|
-| link  | ``!link <parentServerID> <appealServerID>`` | Links an appeal server to a main server. |
-|unlink |``!unlink`` | Unlinks the current server from the linked server. |
-|whitelist|`!whitelist <add/remove> <userID>`|Adds or removes a user from the appeal whitelist|
-| sync  | ``!sync`` | Adds a server to the database if it wasn't already for some reason. |
+| link  | ``/link <parentServerID> <appealServerID>`` | Links an appeal server to a main server. |
+|unlink |``/unlink`` | Unlinks the current server from the linked server. |
+|whitelist|`/whitelist <add/remove> <userID>`|Adds or removes a user from the appeal whitelist|
+| sync  | ``/sync`` | Adds a server to the database if it wasn't already for some reason. |
 
 ## 🌍 This project is open source
 This project is open for anyone to contribute to, thus pull requests are more than welcome!
