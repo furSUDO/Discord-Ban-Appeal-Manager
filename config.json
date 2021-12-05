@@ -1,9 +1,0 @@
-{
-	"prefix": "!",
-	"token": "token",
-	"sqlHost":"localhost",
-	"sqlUser":"root",
-	"sqlPassword":"password",
-	"backupServer":"backup server ID",
-	"backupChannel":"backup channel ID"
-}
