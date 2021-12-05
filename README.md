@@ -50,15 +50,15 @@ The following part of this README will go over hosting your own DBAM bot.
 
 ## 🛠 Your own setup
 #### MySQL server and NodeJS v14 is a prerequisite 
-Setup is very easy, clone the repo, install dependencies by running ``npm i``, and edit the ``config.json`` file in the root directory that looks like this;
-```json
-{
-	"prefix": "!",
-	"token": "Bot Token",
-	"sqlHost":"localhost",
-	"sqlUser":"root",
-	"sqlPassword":"password"
-}
+Setup is very easy, clone the repo, install dependencies by running ``npm i``, and edit the ``.env.example`` file in the root directory to ``.env``, and have it look something like this;
+```js
+DISCORD_TOKEN=BotToken
+SQL_HOST=127.0.0.1
+SQL_USER=root
+SQL_PASSWORD=password
+SQL_DATABASE=dbam
+BACKUP_SERVER=serverID
+BACKUP_CHANNEL=channelID
 ```
 
 ## Setting up some SQL
@@ -81,6 +81,17 @@ CREATE TABLE `linkedservers` (
   UNIQUE KEY `appealServer` (`appealServer`),
   CONSTRAINT `CHK_Crosslink` CHECK (`parentServer` <> `appealServer` or `parentServer` is null or `appealServer` is null)
 )
+```
+to create the cases table:
+```sql
+CREATE TABLE `cases` (
+  `serverID` varchar(24) NOT NULL,
+  `userID` varchar(24) NOT NULL,
+  `caseNumber` int(11) NOT NULL,
+  `archiveID` text NOT NULL,
+  `channelID` varchar(24) NOT NULL,
+  UNIQUE KEY `channelID` (`channelID`)
+) 
 ```
 you also need to create a trigger to prevent servers from being crosslinked. 
 
