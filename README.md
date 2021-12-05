@@ -2,7 +2,7 @@
 <h3 align="center">DBAM is an on-platform solution for managing ban appeals on your discord server.</h3> 
 
 ## 📩 Invite
-#### [Click to invite DBAM to your servers](https://discord.com/api/oauth2/authorize?client_id=849755454208606228&permissions=268443700&scope=applications.commands%20bot)
+#### [Click to invite DBAM to your servers](https://discord.com/api/oauth2/authorize?client_id=849755454208606228&permissions=268443703&scope=applications.commands%20bot)
 
 ## ⚙ Setup
 
